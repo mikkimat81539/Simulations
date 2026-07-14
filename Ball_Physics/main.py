@@ -1,5 +1,7 @@
 import pygame
 
+# make circle using math formula and vectors
+
 # OBJECT CLASSES
 class Ball_Object:
 	def __init__(self, x_pos, y_pos, radius, color):
