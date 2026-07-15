@@ -1,5 +1,7 @@
 import pygame, random
 
+# GOAL: Each time there is collision randomly pick number for speed [1, 10, 20, 19]
+
 
 class Ball_Object:
 	def __init__(self, x_pos, y_pos, color, radius):
@@ -9,8 +11,8 @@ class Ball_Object:
 		self.color = color
 		self.radius = radius
 
-		self.vel_x = 9
-		self.vel_y = 12
+		self.vel_x = random.randint(1, 20)
+		self.vel_y = random.randint(1, 20)
 
 	def drawObject(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
@@ -24,9 +26,11 @@ class Ball_Object:
 	def collision(self, surface_width, surface_height):
 		boundary_x, boundary_y = (surface_width - self.radius), (surface_height - self.radius)
 		
+		# condition for x-axis collison
 		if self.center[0] >= boundary_x or self.center[0] <= 5:
 			self.vel_x = -self.vel_x
 
+		# condition for y-axis collision
 		if self.center[1] >= boundary_y or self.center[1] <= 5:
 			self.vel_y = -self.vel_y
 
