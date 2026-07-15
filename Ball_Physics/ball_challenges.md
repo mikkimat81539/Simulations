@@ -1,5 +1,5 @@
 # Different Ball Physic simulataions
-- 1) Get a ball to bounce using spacebar
+- 1) Get a ball to bounce using spacebar -- DONE
 - 2) Apply charge to a ball when spacebar is held
 - 3) Apply gravity settings
 - 4) Apply direction of where ball should bounce (show arrow)

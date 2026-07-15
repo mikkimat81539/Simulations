@@ -17,10 +17,9 @@ class Ball_Object:
 	def drawObject(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
-	def moveObject(self):
-		# key = pygame.key.get_pressed()
+		print(self.center[1])
 
-		# if key[pygame.K_SPACE]:
+	def moveObject(self):
 		self.velocity += self.gravity
 		self.center[1] += self.velocity
 
@@ -38,7 +37,7 @@ screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("Bouncing Ball")
 
 # BALL
-ball = Ball_Object(250, int(250), 10, "black")
+ball = Ball_Object(250, 250, 10, "black")
 
 # GAME LOOP
 running = True
