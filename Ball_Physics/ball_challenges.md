@@ -1,9 +1,12 @@
 # Different Ball Physic simulataions
 - 1) Get a ball to bounce using spacebar -- DONE
 - 2) Get ball to bounce around floor and walls -- DONE
-- 3) Apply charge to a ball when spacebar is held
-- 4) Apply gravity settings
-- 5) Apply direction of where ball should bounce (show arrow)
-- 6) Create environment so ball can move based on enviroment (slope)
-- 7) Have different size balls and move based on size (weight)
-- 8) Have all ball physics in one file called 'main' and put in each individual surface
+- 3) Get multiples balls of different random colors to collide
+- 4) Apply charge to a ball when spacebar is held
+- 5) Apply gravity settings
+- 6) Apply direction of where ball should bounce (show arrow)
+- 7) Get a ball to roll along the x-axis using arrow keys
+- 8) Get a ball to spin while in the air
+- 9) Create environment so ball can move based on enviroment (slope)
+- 10) Have different size balls and move based on size (weight)
+- 11) Have all ball physics in one file called 'main' and put in each individual surface
