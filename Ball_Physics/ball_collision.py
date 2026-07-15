@@ -9,20 +9,20 @@ class Ball_Object:
 		self.color = color
 		self.radius = radius
 
-		self.vel_x = 21
-		self.vel_y = 17
+		self.vel_x = 9
+		self.vel_y = 12
 
 	def drawObject(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
-	def moveObject(self):
+	def moveObject(self, surface_width, surface_height):
 		self.center[0] += self.vel_x # x-axis movement
 		self.center[1] += self.vel_y # y-axis movement
 
-		self.collision()
+		self.collision(surface_width, surface_height)
 
-	def collision(self):
-		boundary_x, boundary_y = (500 - self.radius), (500 - self.radius)
+	def collision(self, surface_width, surface_height):
+		boundary_x, boundary_y = (surface_width - self.radius), (surface_height - self.radius)
 		
 		if self.center[0] >= boundary_x or self.center[0] <= 5:
 			self.vel_x = -self.vel_x
@@ -32,12 +32,14 @@ class Ball_Object:
 
 pygame.init()
 
-screen = pygame.display.set_mode((500, 500))
+screen_width = 500
+screen_height = 200
+
+screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 
-
 # Ball Object
-ball = Ball_Object(random.randint(10, 420), random.randint(10, 420), "white", 20)
+ball = Ball_Object(random.randint(10, 420), random.randint(10, 120), "white", 10)
 
 running = True
 
@@ -49,7 +51,7 @@ while running:
 	screen.fill("#c296ff")
 
 	# MOVEMENT
-	ball.moveObject()
+	ball.moveObject(screen_width, screen_height)
 
 	# DRAW
 	ball.drawObject(screen)
