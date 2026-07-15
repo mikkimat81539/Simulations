@@ -10,19 +10,24 @@ class Ball_Object:
 		self.center = pygame.math.Vector2(self.x_pos, self.y_pos)
 		self.radius = radius
 		self.color = color
-		self.speed = 5
 		self.gravity = 0.8
-		self.speed_drop = 1
+		self.velocity = 10
 
 	def drawObject(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
 	def moveObject(self):
-		# When spacebar is pressed ball needs to go up in the y_pos
+		# When spacebar is pressed ball needs to go up in the y_pos -- DONE
+		# I need the ball to go down along the y_pos
+
 		key = pygame.key.get_pressed()
 
-		if key[pygame.K_SPACE]:
-			self.center[1] -= self.y_pos
+		# if key[pygame.K_SPACE]:
+		self.velocity += self.gravity
+		self.center[1] += self.velocity
+
+		if self.center[1] >= (480 - self.radius):
+			self.velocity = -self.velocity
 
 # INITIALIZE
 pygame.init()
@@ -35,7 +40,7 @@ screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("Bouncing Ball")
 
 # BALL
-ball = Ball_Object(250, 350, 10, "black")
+ball = Ball_Object(250, int(250), 10, "black")
 
 # GAME LOOP
 running = True
@@ -56,6 +61,6 @@ while running:
 
 	pygame.display.flip()
 
-	clock.tick(40)
+	clock.tick(60)
 
 pygame.quit()
