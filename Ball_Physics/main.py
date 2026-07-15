@@ -12,15 +12,13 @@ class Ball_Object:
 		self.color = color
 		self.gravity = 0.8
 		self.velocity = 10
+		self.activate = False
 
 	def drawObject(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
 	def moveObject(self):
-		# When spacebar is pressed ball needs to go up in the y_pos -- DONE
-		# I need the ball to go down along the y_pos
-
-		key = pygame.key.get_pressed()
+		# key = pygame.key.get_pressed()
 
 		# if key[pygame.K_SPACE]:
 		self.velocity += self.gravity
@@ -50,11 +48,16 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_SPACE:
+				ball.activate = True
+		
 	
 	screen.fill("white")
 
 	# MOVEMENT
-	ball.moveObject()
+	if ball.activate == True:
+		ball.moveObject()
 
 	# DRAW
 	ball.drawObject(screen)
