@@ -6,3 +6,4 @@
 - 5) Apply direction of where ball should bounce (show arrow)
 - 6) Create environment so ball can move based on enviroment (slope)
 - 7) Have different size balls and move based on size (weight)
+- 8) Have all ball physics in one file called 'main' and put in each individual surface
