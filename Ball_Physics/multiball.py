@@ -9,7 +9,10 @@ import pygame
 	# shrink in size each bounce
 	# when ball is less than 1, remove ball
 
-# BONUS surface: spinning surface and ball is going to roll based on direction of surface spinning
+# fifth surface: have a ball bounce off of roof, wall and moving platform controlle with keys
+	# similar to brick breaker
+
+# sixth surface: spinning surface and ball is going to roll based on direction of surface spinning
 
 
 # INITALIZE
@@ -47,6 +50,21 @@ class Ball_Object:
 
 	def draw_object(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
+
+# PLATFORM CLASS
+class Platforms:
+	def __init__(self, x_pos, y_pos, color):
+		self.x_pos = x_pos
+		self.y_pos = y_pos
+		
+		self.start_pos = pygame.math.Vector2(self.x_pos, self.y_pos)
+		self.end_pos = pygame.math.Vector2(self.start_pos[0] + 10, self.start_pos[1])
+
+		self.color = color
+
+	def draw_platform(self, surface):
+		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, 3)
+
 
 # SCREEN
 screen_w, screen_h = 800, 600
