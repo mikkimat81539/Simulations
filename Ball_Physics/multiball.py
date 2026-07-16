@@ -2,7 +2,7 @@ import pygame, random
 
 # Each ball task  will have its own surface
 
-# First surface: Each bounce it changes color (vertical)
+# First surface: Each bounce it changes color (vertical) -- DONE
 # Second surface: collides with other balls. bouncing along floor and walls
 # Third surface: there will be platforms for balls to bounce off of
 # fourth surface: raining balls (no platforms) bounce off floor
