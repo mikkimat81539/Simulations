@@ -52,18 +52,18 @@ class Ball_Object:
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
 # PLATFORM CLASS
-class Platforms:
+class Platform:
 	def __init__(self, x_pos, y_pos, color):
 		self.x_pos = x_pos
 		self.y_pos = y_pos
 		
 		self.start_pos = pygame.math.Vector2(self.x_pos, self.y_pos)
-		self.end_pos = pygame.math.Vector2(self.start_pos[0] + 10, self.start_pos[1])
+		self.end_pos = pygame.math.Vector2(self.start_pos[0] + 150, self.start_pos[1])
 
 		self.color = color
 
 	def draw_platform(self, surface):
-		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, 3)
+		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, 4)
 
 
 # SCREEN
@@ -78,6 +78,9 @@ surface1 = Ball_Surface(10, 10, 200, 200, "pink")
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, surface1.rect.centery - 10, 10, "white")
 
+# PLATFORM OBJECT
+ground1 = Platform(20, 150, "black")
+
 # GAME LOOP
 running = True
 
@@ -90,6 +93,8 @@ while running:
 
 	# DRAW
 	ball1.draw_object(surface1.surface)
+	ground1.draw_platform(surface1.surface)
+
 	surface1.draw_surface(screen)
 
 	pygame.display.flip()
