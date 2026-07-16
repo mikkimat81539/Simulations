@@ -58,7 +58,7 @@ pygame.display.set_caption("Multi-Ball")
 surface1 = Ball_Surface(10, 10, 200, 200, "pink")
 
 # BALL OBJECTS
-ball1 = Ball_Object(surface1.rect.centerx, surface1.rect.centery, 10, "white")
+ball1 = Ball_Object(surface1.rect.centerx - 10, surface1.rect.centery - 10, 10, "white")
 
 # GAME LOOP
 running = True
