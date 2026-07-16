@@ -84,28 +84,18 @@ ground1 = Platform(20, 150, "black")
 velocity1 = 7
 
 # GRAVITY
-gravity1 = 0.8 
+gravity1 = 1
 
 # MOVEMENT FUNCTION
 def movement1(ball, platform, velocity, gravity):
-#	velocity += gravity
-#	ball.center[1] += velocity
+	velocity += gravity
+	ball.center[1] += velocity
 
-	# if ball.center[1] >= (platform.y_pos - (ball.radius - 5)): # move ball until it reaches ground
-		# velocity = -velocity * gravity
+	print(velocity)
 
-	if ball.center[1] < (platform.y_pos - (ball.radius - 5)):
-		velocity += gravity
-		ball.center[1] += velocity
-
-	elif ball.center[1] >= (platform.y_pos - (ball.radius - 5)):
-		ball.center[1] = platform.y_pos - ball.radius # reset the ball position after collision
-		velocity = -velocity * gravity
-
-		if abs(velocity) < 1: 
-			velocity = 0
-
-	return velocity
+	if ball.center[1] >= (platform.y_pos - (ball.radius - 5)): # move ball until it reaches ground
+		velocity = -velocity
+		print(velocity)
 
 # GAME LOOP
 running = True
@@ -118,7 +108,7 @@ while running:
 	screen.fill("white")
 
 	# MOVEMENT
-	velocity1 = movement1(ball1, ground1, velocity1, gravity1)
+	movement1(ball1, ground1, velocity1, gravity1)
 
 	# DRAW
 	ball1.draw_object(surface1.surface)
