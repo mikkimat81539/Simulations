@@ -1,4 +1,4 @@
-import pygame
+import pygame, random
 
 # Each ball task  will have its own surface
 
@@ -81,10 +81,14 @@ ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 ground1 = Platform(20, 150, "black")
 
 # SPEED
-velocity1 = 7
+velocity1 = 5
 
 # GRAVITY
-gravity1 = 0.7 
+gravity1 = 0.8 
+
+# COLORS
+ball_colors = ["red", "blue", "green", "yellow", "purple","orange", "cyan", "magenta", "lime","teal", "navy", "brown", "gray", "gold"]
+
 
 # MOVEMENT FUNCTION
 def movement1(ball, platform, velocity, gravity):
@@ -94,6 +98,8 @@ def movement1(ball, platform, velocity, gravity):
 	# if ball.center[1] >= (platform.y_pos - (ball.radius - 5)): # move ball until it reaches ground
 		# velocity = -velocity * gravity
 
+	ball.center[1] = int(ball.center[1])
+
 	if ball.center[1] < (platform.y_pos - (ball.radius - 5)):
 		# print(f"START: {platform.y_pos - (ball.radius-10)}")
 		# print(f"START ball {ball.center[1]}")
@@ -101,13 +107,18 @@ def movement1(ball, platform, velocity, gravity):
 		ball.center[1] += velocity
 
 	elif ball.center[1] >= (platform.y_pos - (ball.radius - 5)):
-		print(f"Platform END: {platform.y_pos - (ball.radius-5)}")
-		print(f"ball {ball.center[1]}")
-
-		print(f"Velocity: {velocity}\n")
+#		print(f"Platform END: {platform.y_pos - (ball.radius-5)}")
+#		print(f"ball {ball.center[1]}")
+#
+#		print(f"Velocity: {velocity}\n")
 
 		ball.center[1] = platform.y_pos - ball.radius # reset the ball position after collision
 		velocity = -velocity * gravity
+
+		ball.color = random.choice(ball_colors)
+
+		# if abs(velocity) < 7:
+			# velocity = 0
 
 	return velocity
 
