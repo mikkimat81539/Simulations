@@ -1,6 +1,6 @@
 import pygame
 
-# Each ball will have its own surface
+# Each ball task  will have its own surface
 
 # First surface: Each bounce it changes color (vertical)
 # Second surface: collides with other balls. bouncing along floor and walls
@@ -8,11 +8,15 @@ import pygame
 # fourth surface: raining balls (no platforms) bounce off floor
 	# shrink in size each bounce
 	# when ball is less than 1, remove ball
-# fifth surface: have balls stick together and still bounce off of borders 
+
+# BONUS surface: spinning surface and ball is going to roll based on direction of surface spinning
+	# Use Math
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600))
+screen_w, screen_h = 800, 600
+
+screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("Multi-Ball")
 
 # Game Loop
