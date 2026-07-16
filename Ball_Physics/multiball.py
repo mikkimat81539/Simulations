@@ -80,10 +80,14 @@ ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 # PLATFORM OBJECT
 ground1 = Platform(20, 150, "black")
 
+# SPEED
+velocity1 = 7
+
 # MOVEMENT FUNCTION
-def movement(ball):
-	velocity = 7
-	ball.center[1] += velocity
+def movement1(ball, platform, velocity):
+	if ball.center[1] < (platform.y_pos - ball.radius - 5): # move ball until it reaches ground
+		ball.center[1] += velocity
+
 
 # GAME LOOP
 running = True
@@ -96,7 +100,7 @@ while running:
 	screen.fill("white")
 
 	# MOVEMENT
-	movement(ball1)
+	movement1(ball1, ground1, velocity1)
 
 	# DRAW
 	ball1.draw_object(surface1.surface)
