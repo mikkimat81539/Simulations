@@ -26,13 +26,27 @@ class Ball_Surface:
 
 		self.surface = pygame.Surface((self.width, self.height))
 
+		self.rect = self.surface.get_rect(topleft=(self.x_pos, self.y_pos))
+
 	def draw_surface(self, surface):
+		# rect = self.surface.get_rect(topleft=(self.x_pos, self.y_pos))
+
+		surface.blit(self.surface, self.rect)
 		self.surface.fill(self.color)
-		surface.blit(self.surface, (self.x_pos, self.y_pos))
 
 # BALL CLASS
 class Ball_Object:
-	pass
+	def __init__(self, x_pos, y_pos, radius, color):
+		self.x_pos = x_pos
+		self.y_pos = y_pos
+		self.center = pygame.math.Vector2(self.x_pos, self.y_pos)
+
+		self.radius = radius
+		
+		self.color = color
+
+	def draw_object(self, surface):
+		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
 # SCREEN
 screen_w, screen_h = 800, 600
@@ -40,8 +54,11 @@ screen_w, screen_h = 800, 600
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("Multi-Ball")
 
-# OBJECTS
-surface1 = Ball_Surface(10, 10, 100, 100, "pink")
+# SURFACE OBJECTS
+surface1 = Ball_Surface(10, 10, 200, 200, "pink")
+
+# BALL OBJECTS
+ball1 = Ball_Object(surface1.rect.centerx, surface1.rect.centery, 10, "white")
 
 # GAME LOOP
 running = True
@@ -54,6 +71,7 @@ while running:
 	screen.fill("white")
 
 	# DRAW
+	ball1.draw_object(surface1.surface)
 	surface1.draw_surface(screen)
 
 	pygame.display.flip()
