@@ -59,17 +59,18 @@ class Ball_Object:
 			self.velocity_y = -self.velocity_y
 
 class Platform:
-	def __init__(self, x_pos, y_pos, color):
+	def __init__(self, x_pos, y_pos, thickness, color):
 		self.x_pos = x_pos
 		self.y_pos = y_pos
 		
 		self.start_pos = pygame.math.Vector2(self.x_pos, self.y_pos)
 		self.end_pos = pygame.math.Vector2(self.start_pos[0] + 160, self.start_pos[1])
 
+		self.thickness = thickness
 		self.color = color
 
 	def draw_platform(self, surface):
-		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, 4)
+		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, self.thickness)
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -102,7 +103,10 @@ ball3.velocity_y = 0
 
 
 # PLATFORM OBJECT
-ground1 = Platform(20, 150, "black")
+ground1 = Platform(20, 150, 4, "black")
+
+platform = Platform(20, 180, 10, "blue")
+platform.end_pos[0] = 100
 
 # SPEED
 velocity1 = 5
@@ -178,7 +182,7 @@ while running:
 
 	screen.fill("white")
 
-
+	# draw and movement for ball list
 	for i in ball_list:
 		i.move_object(surface2.surface)
 		i.draw_object(surface2.surface)
@@ -192,14 +196,18 @@ while running:
 	ball2.velocity_x, ball3.velocity_x = ball_collision(ball2, ball3, ball2.velocity_x, ball3.velocity_x)
 
 	# DRAW
+	
+	# Balls
 	ball1.draw_object(surface1.surface)
 
 	ball2.draw_object(surface3.surface)
 	ball3.draw_object(surface3.surface)
 
-
+	# Platforms
 	ground1.draw_platform(surface1.surface)
+	platform.draw_platform(surface4.surface)
 
+	# Surfaces
 	surface1.draw_surface(screen)
 	surface2.draw_surface(screen)
 	surface3.draw_surface(screen)
