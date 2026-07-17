@@ -4,6 +4,7 @@ import pygame, random
 
 # First surface: Each bounce it changes color (vertical) -- DONE
 # Second surface: collides with other balls. bouncing along floor and walls
+	# When collision create additional balls
 # Third surface: there will be platforms for balls to bounce off of
 # fourth surface: raining balls (no platforms) bounce off floor
 	# shrink in size each bounce
@@ -79,6 +80,8 @@ surface2 = Ball_Surface(220, 10, 200, 200, "#82edf5")
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 
+ball_list = [Ball_Object(random.randint(10, 150), random.randint(10, 150), 10, "black"), Ball_Object(random.randint(10, 120), random.randint(10, 140), 10, "red"), Ball_Object(random.randint(10, 160), random.randint(10, 138), 10, "pink")]
+
 # PLATFORM OBJECT
 ground1 = Platform(20, 150, "black")
 
@@ -139,6 +142,10 @@ while running:
 
 	# DRAW
 	ball1.draw_object(surface1.surface)
+
+	for i in ball_list:
+		i.draw_object(surface2.surface) 
+
 	ground1.draw_platform(surface1.surface)
 
 	surface1.draw_surface(screen)
