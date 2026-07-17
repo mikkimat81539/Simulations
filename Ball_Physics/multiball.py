@@ -105,8 +105,8 @@ ball3.velocity_y = 0
 # PLATFORM OBJECT
 ground1 = Platform(20, 150, 4, "black")
 
-platform = Platform(20, 180, 10, "blue")
-platform.end_pos[0] = 100
+platform = Platform(50, 180, 10, "blue")
+platform.end_pos[0] = 130
 
 # SPEED
 velocity1 = 5
