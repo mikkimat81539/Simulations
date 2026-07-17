@@ -8,7 +8,11 @@
 - 7) Apply direction of where ball should bounce (show arrow)
 - 8) Get a ball to roll along the x-axis using arrow keys
 - 9) Get a ball to spin while in the air
-- 10) Create environment so ball can move based on enviroment (slope)
+- 10) Create environment so ball can move based on enviroment
+	- slopes
+	- platforms (idle, moving automatically, spinning)
 - 11) Have different size balls and move based on size (weight)
 - 12) Create brick breaker
-- 13) Have all ball physics in one file called 'main' and put in each individual surface
+- 13) Have all ball physics in one file called 'main' and put in each individual screen
+	- Have individual surface with a play button
+	- When button is pressed go to the simulation

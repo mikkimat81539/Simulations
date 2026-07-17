@@ -4,15 +4,9 @@ import pygame, random
 
 # First surface: Each bounce it changes color (vertical) -- DONE
 # Second surface: collides with other balls. bouncing along floor and walls -- DONE
-# Third surface: there will be platforms for balls to bounce off of
-# fourth surface: raining balls (no platforms) bounce off floor
-	# shrink in size each bounce
-	# when ball is less than 1, remove ball
 
-# fifth surface: have a ball bounce off of roof, wall and moving platform controlle with keys
+# third surface: have a ball bounce off of roof, wall and moving platform controlled with keys
 	# similar to brick breaker
-
-# sixth surface: spinning surface and ball is going to roll based on direction of surface spinning
 
 
 # INITALIZE
