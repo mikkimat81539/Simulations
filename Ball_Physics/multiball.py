@@ -47,8 +47,21 @@ class Ball_Object:
 		self.radius = radius
 		self.color = color
 
+		self.velocity_x = 5
+		self.velocity_y = 7	
+
 	def draw_object(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
+
+	def move_object(self, surface):
+		self.center[0] += self.velocity_x
+		self.center[1] += self.velocity_y
+
+		if self.center[0] - self.radius <= 5 or self.center[0] + self.radius >= surface.width:
+			self.velocity_x = -self.velocity_x
+
+		if self.center[1] - self.radius <= 5 or self.center[1] + self.radius >= surface.width:
+			self.velocity_y = -self.velocity_y
 
 class Platform:
 	def __init__(self, x_pos, y_pos, color):
@@ -79,7 +92,8 @@ surface2 = Ball_Surface(220, 10, 200, 200, "#82edf5")
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 
-ball_list = [Ball_Object(random.randint(10, 150), random.randint(10, 150), 10, "black"), Ball_Object(random.randint(10, 120), random.randint(10, 140), 10, "red"), Ball_Object(random.randint(10, 160), random.randint(10, 138), 10, "pink")]
+ball_list = [Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "black"), Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "white")]
+
 
 # PLATFORM OBJECT
 ground1 = Platform(20, 150, "black")
@@ -126,23 +140,6 @@ def movement1(ball, platform, velocity, gravity):
 
 	return velocity
 
-velocity_x = 5
-velocity_y = 7
-
-def movement2(speed_x, speed_y, ball, surface):
-	ball.center[0] += speed_x
-	ball.center[1] += speed_y
-
-	if ball.center[0] <= 5 or ball.center[0] >= surface.width - ball.radius:
-		speed_x = -speed_x
-
-	if ball.center[1] <= 5 or ball.center[1] >= surface.height - ball.radius:
-		speed_y = -speed_y
-
-	# ball.center[0] += speed_x
-	# ball.center[1] += speed_y
-
-	return speed_x, speed_y
 
 # GAME LOOP
 running = True
@@ -154,22 +151,21 @@ while running:
 
 	screen.fill("white")
 
+
+	for i in ball_list:
+		i.move_object(surface2.surface)
+		i.draw_object(surface2.surface)
+
 	# MOVEMENT
 	velocity1 = movement1(ball1, ground1, velocity1, gravity1)
 
 	# DRAW
 	ball1.draw_object(surface1.surface)
 
-	for i in ball_list:
-		velocity_x, velocity_y = movement2(velocity_x, velocity_y, i, surface2.rect)
-		i.draw_object(surface2.surface) 
-
-
 	ground1.draw_platform(surface1.surface)
 
 	surface1.draw_surface(screen)
 	surface2.draw_surface(screen)
-
 
 	pygame.display.flip()
 
