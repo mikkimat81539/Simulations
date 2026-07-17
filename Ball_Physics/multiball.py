@@ -76,7 +76,6 @@ pygame.display.set_caption("Multi-Ball")
 surface1 = Ball_Surface(10, 10, 200, 200, "pink")
 surface2 = Ball_Surface(220, 10, 200, 200, "#82edf5")
 
-
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 
@@ -127,6 +126,24 @@ def movement1(ball, platform, velocity, gravity):
 
 	return velocity
 
+velocity_x = 5
+velocity_y = 7
+
+def movement2(speed_x, speed_y, ball, surface):
+	ball.center[0] += speed_x
+	ball.center[1] += speed_y
+
+	if ball.center[0] <= 5 or ball.center[0] >= surface.width - ball.radius:
+		speed_x = -speed_x
+
+	if ball.center[1] <= 5 or ball.center[1] >= surface.height - ball.radius:
+		speed_y = -speed_y
+
+	# ball.center[0] += speed_x
+	# ball.center[1] += speed_y
+
+	return speed_x, speed_y
+
 # GAME LOOP
 running = True
 
@@ -144,7 +161,9 @@ while running:
 	ball1.draw_object(surface1.surface)
 
 	for i in ball_list:
+		velocity_x, velocity_y = movement2(velocity_x, velocity_y, i, surface2.rect)
 		i.draw_object(surface2.surface) 
+
 
 	ground1.draw_platform(surface1.surface)
 
