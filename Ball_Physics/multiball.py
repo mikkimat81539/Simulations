@@ -47,8 +47,8 @@ class Ball_Object:
 		self.radius = radius
 		self.color = color
 
-		self.velocity_x = 5
-		self.velocity_y = 7	
+		self.velocity_x = random.randint(1, 20)
+		self.velocity_y = random.randint(1, 20)
 
 	def draw_object(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
@@ -92,7 +92,7 @@ surface2 = Ball_Surface(220, 10, 200, 200, "#82edf5")
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
 
-ball_list = [Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "black"), Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "white")]
+ball_list = [Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "black"), Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "white"), Ball_Object(random.randint(10, 70), random.randint(10, 70), 10, "purple")]
 
 
 # PLATFORM OBJECT
