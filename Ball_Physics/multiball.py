@@ -87,16 +87,34 @@ class Platform:
 			self.start_pos[0] += self.vel_x
 			self.end_pos[0] += self.vel_x
 
+		if key[pygame.K_UP]:
+			self.start_pos[1] -= self.vel_y
+			self.end_pos[1] -= self.vel_y
+
+		if key[pygame.K_DOWN]:
+			self.start_pos[1] += self.vel_y
+			self.end_pos[1] += self.vel_y
+
+
 		self.collision()
 
 	def collision(self):
-		if self.start_pos[0] < 5:
+		if self.start_pos[0] < 5: # LEFT SIDE
 			self.start_pos[0] += self.vel_x
 			self.end_pos[0] += self.vel_x
 
-		if self.end_pos[0] > 195:
+		if self.end_pos[0] > 195: # RIGHT SIDE
 			self.start_pos[0] -= self.vel_x
 			self.end_pos[0] -= self.vel_x
+
+		if self.start_pos[1] < 130: # TOP SIDE
+			self.start_pos[1] += self.vel_y
+			self.end_pos[1] += self.vel_y
+
+		if self.end_pos[1] > self.y_pos: # BOTTOM SIDE
+			self.start_pos[1] -= self.vel_y
+			self.end_pos[1] -= self.vel_y
+
 
 # CLOCK
 clock = pygame.time.Clock()
