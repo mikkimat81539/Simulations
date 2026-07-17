@@ -87,6 +87,16 @@ class Platform:
 			self.start_pos[0] += self.vel_x
 			self.end_pos[0] += self.vel_x
 
+		self.collision()
+
+	def collision(self):
+		if self.start_pos[0] < 5:
+			self.start_pos[0] += self.vel_x
+			self.end_pos[0] += self.vel_x
+
+		if self.end_pos[0] > 195:
+			self.start_pos[0] -= self.vel_x
+			self.end_pos[0] -= self.vel_x
 
 # CLOCK
 clock = pygame.time.Clock()
