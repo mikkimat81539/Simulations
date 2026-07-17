@@ -69,8 +69,24 @@ class Platform:
 		self.thickness = thickness
 		self.color = color
 
+
+		self.vel_x = 5
+		self.vel_y = 5
+
 	def draw_platform(self, surface):
 		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, self.thickness)
+
+	def move_platform(self):
+		key = pygame.key.get_pressed()
+
+		if key[pygame.K_LEFT]:
+			self.start_pos[0] -= self.vel_x
+			self.end_pos[0] -= self.vel_x
+
+		if key[pygame.K_RIGHT]:
+			self.start_pos[0] += self.vel_x
+			self.end_pos[0] += self.vel_x
+
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -191,6 +207,9 @@ while running:
 	velocity1 = movement1(ball1, ground1, velocity1, gravity1)
 	ball2.move_object(surface3.surface)
 	ball3.move_object(surface3.surface)
+
+	# platform movement
+	platform.move_platform()
 
 	# COLLISION
 	ball2.velocity_x, ball3.velocity_x = ball_collision(ball2, ball3, ball2.velocity_x, ball3.velocity_x)
