@@ -73,6 +73,8 @@ pygame.display.set_caption("Multi-Ball")
 
 # SURFACE OBJECTS
 surface1 = Ball_Surface(10, 10, 200, 200, "pink")
+surface2 = Ball_Surface(220, 10, 200, 200, "#82edf5")
+
 
 # BALL OBJECTS
 ball1 = Ball_Object(surface1.rect.centerx - 10, 20, 10, "white")
@@ -140,6 +142,8 @@ while running:
 	ground1.draw_platform(surface1.surface)
 
 	surface1.draw_surface(screen)
+	surface2.draw_surface(screen)
+
 
 	pygame.display.flip()
 
