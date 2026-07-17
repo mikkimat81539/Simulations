@@ -169,7 +169,7 @@ platform = Platform(70, 180, 10, "blue")
 platform.end_pos[0] = 130
 
 # BLOCK
-block1 = Blocks(50, 20, 50, 20, "gray")
+# block1 = Blocks(50, 20, 50, 20, "gray")
 
 # SPEED
 velocity1 = 5
@@ -235,12 +235,12 @@ def ball_collision(ball_1, ball_2, ball1_speed, ball2_speed): # Collision betwee
 	return ball1_speed, ball2_speed
 
 def platform_collision(ball, platform, ball_speed_x, ball_speed_y, surface):
-	ball.center[0] += ball_speed_x
+	 # ball.center[0] += ball_speed_x
 	ball.center[1] += ball_speed_y
 
 
 	if platform.start_pos[0] <= ball.center[0] <= platform.end_pos[0] and ball.center[1] + ball.radius == platform.start_pos[1]: # Platform and Ball collision
-		ball_speed_x = -ball_speed_x
+		# ball_speed_x = -ball_speed_x
 		ball_speed_y = -ball_speed_y
 
 	if ball.center[1] - ball.radius < 5: 
@@ -296,7 +296,7 @@ while running:
 	platform.draw_platform(surface4.surface)
 
 	# Blocks
-	block1.draw_blocks(surface4.surface)
+	# block1.draw_blocks(surface4.surface)
 
 	# Surfaces
 	surface1.draw_surface(screen)
