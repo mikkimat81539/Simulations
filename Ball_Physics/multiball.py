@@ -145,11 +145,15 @@ ball3 = Ball_Object(175, 100, 20, "orange")
 ball3.velocity_x = 5
 ball3.velocity_y = 0
 
+ball4 = Ball_Object(100, 20, 10, "green")
+ball3.velocity_x = 0
+ball3.velocity_y = 0
+
 
 # PLATFORM OBJECT
 ground1 = Platform(20, 150, 4, "black")
 
-platform = Platform(50, 180, 10, "blue")
+platform = Platform(70, 180, 10, "blue")
 platform.end_pos[0] = 130
 
 # SPEED
@@ -249,6 +253,9 @@ while running:
 
 	ball2.draw_object(surface3.surface)
 	ball3.draw_object(surface3.surface)
+
+	ball4.draw_object(surface4.surface)
+
 
 	# Platforms
 	ground1.draw_platform(surface1.surface)
