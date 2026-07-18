@@ -18,8 +18,9 @@
 - 12) Create brick breaker simulation
 - 13) Create Pool simulation
 - 14) Create Beer Bong Simulation
-- 16) Create Golf Simulation
-- 15) Have all ball physics in one file called 'main' and put in each individual screen
+- 15) Create Golf simulation
+- 16) Create Pinball simulation
+- 16) Have all ball physics in one file called 'main' and put in each individual screen
 	- Display in pygbag
 	- Have individual surface with a play button
 	- When button is pressed go to the simulation

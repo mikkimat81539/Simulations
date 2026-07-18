@@ -1,0 +1,34 @@
+- Kinetic Energy is energy from motion
+	EXAMPLE:
+		- A rolling Bowling ball
+		- Moving car
+		- Thrown baseball
+		- Swinging hammer
+
+	- Any object in motion has kinetic energy
+	- Kinetic energy depends on both mass and speed
+		- depends more on the speed
+	- KE = 1/2 (m*v^2)
+		- m = mass
+		- v = velocity
+
+	- if mass doubles, than kinetic energy doubles
+	- if speed doubles, quadruples
+
+	EXAMPLE of kinetic energy:
+		- Red ball: mass = 0.05kg v = 5 m/s
+				- red ball has a smaller mass
+			ren_ball KE = 0.1J
+
+		- Green ball: mass = 0.1kg v = 2 m/s
+				- green ball has a bigger mass
+			green_ball KE = 0.2J
+
+		- Green ball has more kinetic energy because it has more mass
+
+- Elastic Collision is where total kinetic energy is conserved (the total amount of kinetic energy is constant)
+	- This means it remains the same value before and after collision 
+
+	- EXAMPLE of Elastic Collision: Kred_init + Korange_init = Kred_final + Korange_final
+		- initial means before collision
+		- final mean after collision
