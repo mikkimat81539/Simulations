@@ -19,6 +19,7 @@
 		- Red ball: mass = 0.05kg v = 5 m/s
 				- red ball has a smaller mass
 			ren_ball KE = 0.1J
+				J = joules
 
 		- Green ball: mass = 0.1kg v = 2 m/s
 				- green ball has a bigger mass

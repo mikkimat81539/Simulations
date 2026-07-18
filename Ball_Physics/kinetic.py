@@ -1,6 +1,6 @@
-# GOAL: create two balls that consist of mass and velocity
-	# Determine the kinetic energy
-	# Display which has more kinetic energy
+# GOAL: create two balls that consist of mass and velocity -- DONE
+	# Determine the kinetic energy -- DONE
+	# Display which has more kinetic energy -- DONE
 
 import pygame
 
@@ -22,8 +22,9 @@ class Ball:
 	def draw_object(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
-	def move_object(self):
-		pass
+	def kinetic_energy(self):
+		KE = 0.5*(self.mass * (self.velocity)**2)
+		return KE
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -35,6 +36,20 @@ screen = pygame.display.set_mode((500, 500))
 green_ball = Ball(20, 20, 10, 2, 1, "green")
 red_ball = Ball(100, 100, 20, 5, 1, "red")
 
+
+KE_green = green_ball.kinetic_energy()
+KE_red = red_ball.kinetic_energy()
+
+print(f"""\nThe green ball has a kinetic energy of {KE_green}J and the red ball has a kinetic energy of {KE_red}J\n""")
+
+if KE_green > KE_red:
+	print("The green ball has more kinetic energy")
+
+elif KE_green == KE_red:
+	print("The green ball and red ball have the same kinetic energy")
+
+else:
+	print("The red ball has more kinetic energy")
 
 # GAME LOOP
 running = True
