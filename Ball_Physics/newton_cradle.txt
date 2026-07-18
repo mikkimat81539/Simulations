@@ -28,6 +28,60 @@
 
 		- Green ball has more kinetic energy because it has more mass
 
+- Momentum: The quantity of motion possessed by a body
+- formula of momentum (linear):  P = m*v
+	- m = mass (measured in kg)
+	- v = velocity (measured in m/s)
+
+- Momentum is a vector quantity, meaning it has both magnitude and direction
+
+	- EXAMPLE of momentum: moving truck and a moving bike both have same velocity but truck has more mass, so it'll have more momentum than the bike which has less mass
+
+- Momentum is never lost, it only transfers from one object to another
+
+- According to the law of conservation of momentum, in a closed system where no external forces are acting, the total momentum stays constant if no external force acts
+	- the total momentum of an object before a collision is equal to the total momentum of an object after the collision
+
+- momentum is not created or destroyed
+
+conservation of momentum formula: (m1*v1) + (m2*v2) + ... = (m1+v1') +(m2+v2') + ...
+				- p_initial = p_final
+
+	EXAMPLE momentum problem: 
+		- Before collision
+			- ball1 mass = 0.170kg 
+			- ball1 velocity = 6 m/s
+
+			- ball2 mass = 0.170kg
+			- ball2 velocity = 0 m/s
+
+			momentum_ball1 = (0.170*6) --> 1.02 kg m/s
+			momentun_ball2 = (0.170 * 0) --> 0 kg m/s (no momentum)
+
+		Total momentum before collision (p_initial) = p1 + p2
+			- p_init = 1.02 + 0 --> 1.02 kg m/s
+
+		- After collision
+			- ball1 mass = 0.170kg 
+			- ball1 velocity = 0 m/s
+
+			- ball2 mass = 0.170kg
+			- ball2 velocity = 6 m/s
+
+			momentun_ball1 = (0.170 * 0) --> 0 kg m/s (no momentum)
+			momentun_ball2 = 1.02 kg m/s
+
+			v2 = ball2_momentum / mass of ball2
+			ball2 velocity = 1.02 / 0.170 --> 6 
+
+
+		Total momentum after collision (p_final) = p1 + p2
+			- p_final = 1.02 + 0 --> 1.02 kg m/s
+
+
+		** How fast is ball2 moving after collision
+		** What is total momentum
+
 - Elastic Collision is where total kinetic energy is conserved (the total amount of kinetic energy is constant)
 	- This means it remains the same value before and after collision 
 
