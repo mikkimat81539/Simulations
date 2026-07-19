@@ -2,24 +2,23 @@
 - 1) Get a ball to bounce using spacebar -- DONE
 - 2) Get ball to bounce around floor and walls -- DONE
 - 3) Get multiple balls of different random colors to collide -- DONE
-- 4) Create Newtons Cradle
-- 5) Apply charge to a ball when spacebar is held
-- 6) Apply gravity settings
-- 7) Apply direction of where ball should bounce (show arrow)
+- 4) Apply charge to a ball when spacebar is held
+- 5) Apply direction of where ball should bounce (show arrow)
 	- Apply direction
 	- Apply projectile motion
+- 6) Create Newtons Cradle 
+- 7) Apply gravity settings
 - 8) Get a ball to roll along the x-axis using arrow keys
 - 9) Get a ball to spin while in the air
 - 10) Create environment so ball can move based on enviroment
 	- slopes
 	- platforms (idle, moving automatically, spinning)
 	- ball collection
-- 11) Have different size balls and move based on size (weight)
-- 12) Create brick breaker simulation
-- 13) Create Pool simulation
-- 14) Create Beer Bong Simulation
-- 15) Create Golf simulation
-- 16) Create Pinball simulation
+- 11) Create brick breaker simulation
+- 12) Create Pool simulation
+- 13) Create Beer Bong Simulation
+- 14) Create Golf simulation
+- 15) Create Pinball simulation
 - 16) Have all ball physics in one file called 'main' and put in each individual screen
 	- Display in pygbag
 	- Have individual surface with a play button
