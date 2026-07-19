@@ -1,4 +1,4 @@
-# create two balls 
+# create two balls -- DONE
 # Have balls collide with each other
 	# ball1 will have a momentum and when it collides with ball2 the momentum will be transferred to ball2
 		# when spacebar is pressed than move ball1 when ball2 hits wall stop
@@ -21,12 +21,14 @@ class Ball:
 
 		self.velocity = velocity
 		self.mass = mass
+		
+		self.activate = False
 
 	def draw_object(self, surface):
 		pygame.draw.circle(surface, self.color, self.center, self.radius, self.mass)
 
 	def move_object(self):
-		pass
+		self.center[0] += self.velocity
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -39,6 +41,7 @@ pygame.display.set_caption("Momentum")
 ball1 = Ball(50, 250, 30, "black", 7, 10)
 ball2 = Ball(250, 250, 30, "red", 7, 10)
 
+activate = False
 
 # GAME LOOP
 running = True
@@ -48,8 +51,20 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_SPACE:
+				ball1.activate = True
+
+#		if event.type == pygame.KEYUP:	
+#			ball1.activate = False
+#			print(False)
+
 	screen.fill("white")
 
+	# MOVEMENT
+	if ball1.activate == True:
+		ball1.move_object()
+	
 	# DRAW
 	ball1.draw_object(screen)
 	ball2.draw_object(screen)
