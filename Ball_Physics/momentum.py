@@ -1,10 +1,7 @@
 # create two balls -- DONE
-# Have balls collide with each other
-	# ball1 will have a momentum and when it collides with ball2 the momentum will be transferred to ball2
+# Have balls collide with each other -- DONE
+	# ball1 will have a momentum and when it collides with ball2 the momentum will be transferred to ball2 -- DONE
 		# when spacebar is pressed than move ball1 -- DONE
-		# when ball2 hits wall stop
-			# apply charge when spacebar is held
-			# Have different speeds
 
 import pygame, math
 
@@ -39,28 +36,31 @@ screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("Momentum")
 
 # BALL
-ball1 = Ball(50, 250, 30, "black", 5, 10)
-ball2 = Ball(250, 250, 30, "red", 0, 10)
+ball1 = Ball(50, 250, 30, "black", 7, 10) # inital velocity = 5
+ball2 = Ball(250, 250, 30, "red", 0, 10) # initial velocity = 0
 
 
 # COLLISION
 def collision(ball1, ball2):
+	# print(f"INITAL: Ball 1 p = {ball1.mass*ball1.velocity}, Ball 2 p = {ball2.mass*ball2.velocity}")
+
 	total_x = (ball2.center[0] - ball1.center[0]) ** 2
 	total_y = (ball2.center[1] - ball1.center[1]) ** 2
 
-	total_radii = ball2.radius + ball1.radius
+	total_radii = ball2.radius + ball1.radius # total of radii
 
-	d = int(math.sqrt(total_x + total_y))
+	d = int(math.sqrt(total_x + total_y)) # distance formula
 
-	if d < total_radii and ball1.velocity != 0:
+	if d < total_radii and ball1.velocity != 0: # collsion condition
 		ball1_p = ball1.mass * ball1.velocity # Ball 1 momentum
 
-		ball1.velocity = 0
+		ball1.velocity = 0 # get ball 1 to stop moving (Ball 1 final velcity is 0)
 
-		ball2.velocity = ball1_p // ball2.mass
+		ball2.velocity = ball1_p // ball2.mass # Ball 2 final velocity 
+
+		# print(f"COLLISION: Ball 1 p = {ball1.mass*ball1.velocity}, Ball 2 p = {ball2.mass*ball2.velocity}")
 
 		# print(ball1.velocity, ball2.velocity)
-
 
 	return ball1.velocity, ball2.velocity
 
@@ -87,6 +87,8 @@ while running:
 
 	if ball2.velocity != 0:
 		ball2.move_object()
+		# print(f"FINAL: Ball 1 p = {ball1.mass*ball1.velocity}, Ball 2 p = {ball2.mass*ball2.velocity}")
+
 
 	# MOVEMENT
 	if ball1.activate == True:
@@ -98,6 +100,6 @@ while running:
 
 	pygame.display.update()
 
-	clock.tick(40)
+	clock.tick(60)
 
 pygame.quit()
