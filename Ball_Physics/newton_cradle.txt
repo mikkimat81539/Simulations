@@ -47,6 +47,8 @@
 conservation of momentum formula: (m1*v1) + (m2*v2) + ... = (m1+v1') +(m2+v2') + ...
 				- p_initial = p_final
 
+momentum formula: P = m*v
+
 	EXAMPLE momentum problem: 
 		- Before collision
 			- ball1 mass = 0.170kg 
