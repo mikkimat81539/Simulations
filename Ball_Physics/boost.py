@@ -11,12 +11,23 @@ screen = curses.initscr()
 
 def main(surface):
 	surface.clear()
-	curses.noecho()
+	curses.noecho() # Do not show keys pressed
 
-	surface.addstr("O\n")
+	win_x = 30 # window x_pos of where it should be on init screen
+	win_y = 0 # window y_pos of where it should be on the init screen
+	win_height = 20 # window height
+	win_width = 50 # window width
 
-	surface.refresh()
-	surface.getkey()
+	win = curses.newwin(win_height, win_width, win_y, win_x) # create window on top of inital window
+
+	win.border() # show window outline
+
+	curses.curs_set(0) # cursor visibility
+
+	win.addstr(win_x // 2, win_y // 2, "O") # Display text on (y, x)
+
+	win.refresh()
+	win.getkey()
 
 	curses.endwin()	
 
