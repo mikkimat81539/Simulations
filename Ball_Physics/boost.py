@@ -9,6 +9,17 @@ import curses
 # initalize screen
 screen = curses.initscr()
 
+class Ball:
+	def __init__(self, y_pos, x_pos, text):
+		self.y_pos = y_pos
+		self.x_pos = x_pos
+		self.text = text
+
+		self.velocity = 7
+
+	def draw_ball(self, surface):
+		surface.addstr(self.y_pos // 2, self.x_pos // 2, self.text)
+
 def main(surface):
 	surface.clear()
 	curses.noecho() # Do not show keys pressed
@@ -24,7 +35,10 @@ def main(surface):
 
 	curses.curs_set(0) # cursor visibility
 
-	win.addstr(win_x // 2, win_y // 2, "O") # Display text on (y, x)
+	ball = Ball(win_height, win_width, "O")
+	ball.draw_ball(win)
+
+	# Draw_Ball(win, win_height, win_width, "O") # Draw Ball function
 
 	win.refresh()
 	win.getkey()
