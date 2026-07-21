@@ -17,22 +17,33 @@ class Ball:
 
 		self.velocity = 1
 
+		# save current position for next frame
+		self.prev_x = self.x_pos
+		self.prev_y = self.y_pos
+
 	def draw_ball(self, surface):
+		# Erase previous position
+		surface.addstr(int(self.prev_y / 2), int(self.prev_x // 2), "")
+
+		# new position
 		surface.addstr(int(self.y_pos / 2), int(self.x_pos // 2), self.text)
 
 		curses.napms(16) # pauses the program for a number of milliseconds.
+
+		self.prev_x = self.x_pos
+		self.prev_y = self.y_pos
 
 
 	def move_ball(self, surface, surface_height):
 		while True:
 			dt = 1 / 60 # FPS
+
 			self.y_pos += self.velocity * dt
 
-			if self.y_pos >= surface_height:
-				self.velocity = 0
+			print(self.y_pos)
 
 			self.draw_ball(surface)
-
+			
 			surface.refresh()
 
 def main(surface):
@@ -55,9 +66,11 @@ def main(surface):
 	ball.move_ball(win, win_height) # moving the ball
 	# ball.draw_ball(win) # Display ball
 
-	# win.refresh()
+	with open("speed.txt", "x") as f:
+		f.write(f"{ball.y_pos}")
 
-	# curses.napms(100) # pauses the program for a number of milliseconds.
+
+	win.refresh()
 
 	win.getkey()
 
