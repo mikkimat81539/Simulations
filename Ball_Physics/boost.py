@@ -1,63 +1,44 @@
-# Create a ball (O) -- DONE
-	# When spacebar is pressed activate ball
-	# Ball needs to move in the -y direction
+# create ball 
+# create a booster
+	# Create booster class using line as the shape
+	# Increase booster along the y-axis
+	# To increase booster use spacebar
+	# velocity needs to increase when spacebar is held
+	# have a max velocity of 10
 
-# Create a charge bar (|) or (*)
-	# When spacebar is held increase velocity by 1
-		# One press is 1
-	# Add | or * as spacebar is held
-	# store velocity as new velocity
-	# start velocity at 0
-	# Display charge bar on the side and have it display going up on the y_axis
-	# when spacebar is released ball should move
+# GOAL: When spacebar is held and than release ball shoots based on velocity after release
+
+import pygame
+from Ball_Object import Ball
+
+pygame.init()
+
+# CLOCK
+clock = pygame.time.Clock()
+
+# SCREEN
+screen = pygame.display.set_mode((500, 500))
+pygame.display.set_caption("BOOSTER")
+
+# BALL
+ball = Ball(20, 250, 10, "black", 7)
+
+# GAME LOOP
+running = True
+
+while running:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			running = False
+
+	screen.fill("white")
+
+	# DRAW
+	ball.draw_ball(screen)
+
+	pygame.display.flip()
+
+pygame.quit()
 
 
-import curses
 
-# Ball Class
-class Ball:
-	def __init__(self, y_pos, x_pos):
-		self.y_pos = y_pos
-		self.x_pos = x_pos
-		self.text = "O"
-
-		self.velocity = 5
-
-	def draw(self, surface):
-		surface.addch(self.y_pos, self.x_pos, self.text)
-
-	def move(self):
-		pass
-
-# Booster Class
-class Booster:
-	pass
-
-
-def main(surface):
-	surface.clear()
-	curses.noecho()
-
-	win_x = 40
-	win_y = 0
-	win_width = 50
-	win_height = 20
-
-	win = curses.newwin(win_height, win_width, win_y, win_x)
-
-	curses.curs_set(0)
-
-	win.border()
-
-	ball = Ball(win_height - 2, win_width//2)
-	ball.draw(win)
-
-	win.refresh()
-
-	win.getkey()
-
-	curses.endwin()
-
-screen = curses.initscr()
-
-curses.wrapper(main)
