@@ -15,7 +15,7 @@ class Ball:
 		self.x_pos = x_pos
 		self.text = text
 
-		self.velocity = 1
+		self.velocity = 10
 
 		# save current position for next frame
 		self.prev_x = self.x_pos
@@ -23,10 +23,10 @@ class Ball:
 
 	def draw_ball(self, surface):
 		# Erase previous position
-		surface.addstr(int(self.prev_y / 2), int(self.prev_x // 2), "")
+		surface.addstr(int(self.prev_y), int(self.prev_x), " ")
 
 		# new position
-		surface.addstr(int(self.y_pos / 2), int(self.x_pos // 2), self.text)
+		surface.addstr(int(self.y_pos), int(self.x_pos), self.text)
 
 		curses.napms(16) # pauses the program for a number of milliseconds.
 
@@ -40,9 +40,13 @@ class Ball:
 
 			self.y_pos += self.velocity * dt
 
-			print(self.y_pos)
-
+#			with open("speed.txt", "a") as f:
+#				f.write(f"{self.y_pos // 2}\n")
+	
 			self.draw_ball(surface)
+
+			if int(self.y_pos) >= surface_height - 2:
+				self.velocity = 0
 			
 			surface.refresh()
 
@@ -61,14 +65,10 @@ def main(surface):
 
 	curses.curs_set(0) # cursor visibility
 
-	ball = Ball(win_height, win_width, "O") # ball object
+	ball = Ball(2, win_width // 2, "O") # ball object
 
 	ball.move_ball(win, win_height) # moving the ball
 	# ball.draw_ball(win) # Display ball
-
-	with open("speed.txt", "x") as f:
-		f.write(f"{ball.y_pos}")
-
 
 	win.refresh()
 
@@ -76,4 +76,4 @@ def main(surface):
 
 	curses.endwin()	
 
-main(screen)
+curses.wrapper(main)
