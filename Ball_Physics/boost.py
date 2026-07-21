@@ -25,8 +25,18 @@ class Booster:
 		self.color = color
 		self.thickness = thickness
 
+		self.activate = False
+
+		self.increase = 3 # This moves the line
+
 	def draw_line(self, surface):
 		pygame.draw.line(surface, self.color, self.start_pos, self.end_pos, self.thickness)
+		
+	def move_line(self, ball):
+		self.start_pos[1] -= self.increase # Display line movement along the y axis	
+		ball.velocity += 1 # increase the ball velocity	
+		# print(f"VELOCITY: {ball.velocity}")
+		# print(f"Y POS: {self.start_pos[1]}")
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -36,7 +46,7 @@ screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("BOOSTER")
 
 # BALL
-ball = Ball(20, 250, 10, "black", 7)
+ball = Ball(20, 250, 10, "black", 0)
 
 # BOOSTER
 booster = Booster(480, 300, "red", 5)
@@ -49,7 +59,22 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_ESCAPE:
+				running = False
+
+			if event.key == pygame.K_SPACE:
+				booster.activate = True
+
+		if event.type == pygame.KEYUP: # When space is release go back to original position
+			booster.activate = False
+			booster.start_pos[1] = booster.y_pos
+
 	screen.fill("white")
+
+	# MOVEMENT
+	if booster.activate == True:
+		booster.move_line(ball)
 
 	# DRAW
 	ball.draw_ball(screen)
