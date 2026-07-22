@@ -4,9 +4,9 @@
 	# Increase booster along the y-axis -- DONE
 	# To increase booster use spacebar -- DONE
 	# velocity needs to increase when spacebar is held -- DONE
-	# have a max velocity of 10
+	# have a max velocity of 80 -- DONE
 
-# GOAL: When spacebar is held and than release ball shoots based on velocity after release
+# GOAL: When spacebar is held and than release ball shoots based on velocity after release -- DONE
 
 import pygame
 from Ball_Object import Ball
@@ -38,10 +38,13 @@ class Booster:
 		# print(f"VELOCITY: {ball.velocity}")
 		# print(f"Y POS: {self.start_pos[1]}")
 
-		if self.start_pos[1] < 10:
+		if self.start_pos[1] < 10: # when bar reaches top that stop charging
 			self.activate = False
 			return
 			
+		if ball.velocity >= 80: # Max of 80 as speed
+			self.activate = False
+			return
 
 # CLOCK
 clock = pygame.time.Clock()
@@ -68,7 +71,7 @@ while running:
 			if event.key == pygame.K_ESCAPE:
 				running = False
 
-			if event.key == pygame.K_SPACE:
+			elif event.key == pygame.K_SPACE:
 				booster.activate = True
 
 		if event.type == pygame.KEYUP: # When space is release go back to original position
@@ -86,10 +89,11 @@ while running:
 	if ball.activate == True:
 		ball.move_ball()
 		# print(f"Ball Speed: {ball.velocity}")
-		print(f"Ball X_Pos{ball.center[0]}")
+		# print(f"Ball X_Pos{ball.center[0]}")
 
 		if ball.center[0] >= screen.get_width()-ball.radius:
-			ball.center[0] -= ball.velocity
+			ball.center[0] = screen.get_width() - ball.radius
+			# print(ball.velocity)
 
 	# DRAW
 	ball.draw_ball(screen)
