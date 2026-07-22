@@ -19,4 +19,4 @@ class Ball:
 		pygame.draw.circle(surface, self.color, self.center, self.radius)
 
 	def move_ball(self):
-		self.center[0] += velocity
+		self.center[0] += self.velocity
